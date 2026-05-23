@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bharat Ledger</title>
+    <link rel="stylesheet" href="/styles/fonts.css" />
+    <link rel="stylesheet" href="/styles/app.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark">भ</div>
+          <div>
+            <div class="brand">भारत Ledger</div>
+            <div class="tagline">Agentic hisaab for daily business</div>
+          </div>
+        </div>
+
+        <div class="company-card">
+          <span>ACTIVE COMPANY</span>
+          <strong>Apex Polymers Pvt Ltd</strong>
+          <small>27AABCA1234F1Z5 · FY 2025-26</small>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <button class="active" data-view="dashboard"><span>▣</span> Dashboard</button>
+          <button data-view="journal"><span>📒</span> Journal Entries</button>
+          <button data-view="bank"><span>🏦</span> Bank & Cards</button>
+          <button data-view="accounts"><span>📚</span> Traditional Accounts</button>
+          <button data-view="graphs"><span>📈</span> Advance Graphs</button>
+          <button data-view="payables"><span>💳</span> Payables / AR</button>
+          <button data-view="gst"><span>🏛</span> GST & Compliance</button>
+          <button data-view="tax"><span>💡</span> Tax Intelligence</button>
+          <button data-view="expense"><span>📊</span> Expense Analysis</button>
+          <button data-view="stack"><span>🗄</span> Stack Tracker</button>
+          <button data-view="ai"><span>🤖</span> AI Chatbot</button>
+          <button data-view="whatsapp"><span>💬</span> WhatsApp Hub</button>
+          <button data-view="alerts"><span>🚨</span> Alerts <b id="alertBadge">4</b></button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div>
+            <div class="module-kicker" id="moduleKicker">PAGE 02 / 13</div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="muted" id="pageSubtitle">Live KPIs, monthly revenue vs expense chart, quick action buttons.</div>
+          </div>
+          <div class="topbar-actions">
+            <button class="insight-button" id="insightToggle" type="button">AI Insight</button>
+            <div class="status-strip">
+              <span>FY 25-26</span>
+              <span>GST COMPLIANT</span>
+              <span class="balanced">BS: BALANCED</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="view" data-panel="dashboard">
+          <div class="hero-band">
+            <div>
+              <strong>Apex Polymers Pvt Ltd</strong>
+              <span>FY 2025-26 · 27AABCA1234F1Z5</span>
+            </div>
+            <div class="badge-row">
+              <span>MAKE IN INDIA</span>
+              <span>GST READY</span>
+              <span>DOUBLE ENTRY</span>
+            </div>
+          </div>
+
+          <section class="grid stats" aria-label="Ledger summary">
+            <div class="card stat">
+              <span>Revenue</span>
+              <strong id="income">Rs 0</strong>
+            </div>
+            <div class="card stat">
+              <span>Expenses</span>
+              <strong id="expense">Rs 0</strong>
+            </div>
+            <div class="card stat">
+              <span>Net Profit</span>
+              <strong id="net">Rs 0</strong>
+            </div>
+            <div class="card stat">
+              <span>Total Assets</span>
+              <strong id="assets">Rs 68.2L</strong>
+            </div>
+            <div class="card stat">
+              <span>GST Payable</span>
+              <strong id="gstPayable">Rs 2.1L</strong>
+            </div>
+            <div class="card stat">
+              <span>Entries</span>
+              <strong id="entryCount">0</strong>
+            </div>
+          </section>
+
+          <section class="grid dashboard-grid">
+            <div class="card section chart-card">
+              <div class="section-head">
+                <h2>Revenue vs Expense</h2>
+                <span class="muted">Monthly · 7-month view</span>
+              </div>
+              <div class="bar-chart" aria-label="Revenue versus expense chart">
+                <div style="--rev: 62%; --exp: 42%"><span>Apr</span></div>
+                <div style="--rev: 48%; --exp: 38%"><span>May</span></div>
+                <div style="--rev: 70%; --exp: 54%"><span>Jun</span></div>
+                <div style="--rev: 56%; --exp: 46%"><span>Jul</span></div>
+                <div style="--rev: 78%; --exp: 60%"><span>Aug</span></div>
+                <div class="current" style="--rev: 88%; --exp: 64%"><span>Sep</span></div>
+                <div style="--rev: 64%; --exp: 48%"><span>Oct</span></div>
+              </div>
+            </div>
+
+            <div class="card section">
+              <div class="section-head">
+                <h2>Quick Actions</h2>
+                <span class="muted">Navigation</span>
+              </div>
+              <div class="quick-grid">
+                <button class="quick-action" data-jump="journal">Post Journal</button>
+                <button class="quick-action" data-jump="graphs">Open Graphs</button>
+                <button class="quick-action" data-jump="ai">Ask AI</button>
+                <button class="quick-action" data-jump="whatsapp">WhatsApp Hub</button>
+                <button class="quick-action" data-jump="gst">GST Portal</button>
+              </div>
+            </div>
+
+            <div class="card section">
+              <div class="section-head">
+                <h2>Recent Ledger</h2>
+                <span class="muted" id="txnCount">0 entries</span>
+              </div>
+              <div class="list" id="transactions"></div>
+            </div>
+
+            <div class="card section">
+              <div class="section-head">
+                <h2>Pending Drafts</h2>
+                <span class="muted">AI proposes, you confirm</span>
+              </div>
+              <div class="list" id="drafts"></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="grid workspace view hidden" data-panel="journal">
+          <div class="card section">
+            <div class="section-head">
+              <h2>New Journal Entry</h2>
+              <span class="muted">Double entry starter</span>
+            </div>
+            <form class="form-grid" id="transactionForm">
+              <label>
+                <span>Type</span>
+                <select name="type">
+                  <option value="income">Income</option>
+                  <option value="expense">Expense</option>
+                </select>
+              </label>
+              <label>
+                <span>Party</span>
+                <input name="partyName" placeholder="Sharma ji" required />
+              </label>
+              <label>
+                <span>Amount</span>
+                <input name="amount" type="number" min="1" step="0.01" placeholder="12500" required />
+              </label>
+              <label>
+                <span>Category</span>
+                <input name="category" placeholder="Sales, Payroll, COGS" />
+              </label>
+              <label>
+                <span>Payment Method</span>
+                <select name="paymentMethod">
+                  <option>UPI</option>
+                  <option>Cash</option>
+                  <option>Bank</option>
+                  <option>Card</option>
+                </select>
+              </label>
+              <label>
+                <span>GST Rate</span>
+                <select name="gstRate">
+                  <option>0%</option>
+                  <option>5%</option>
+                  <option>12%</option>
+                  <option selected>18%</option>
+                  <option>28%</option>
+                </select>
+              </label>
+              <label class="wide">
+                <span>Note</span>
+                <input name="note" placeholder="Optional note" />
+              </label>
+              <div class="balance-preview wide">
+                <span>Dr Account</span>
+                <strong>⇄</strong>
+                <span>Cr Account</span>
+                <b>BALANCED</b>
+              </div>
+              <div class="wide actions">
+                <button class="btn primary" type="submit">Post Entry</button>
+                <button class="btn" type="reset">Clear</button>
+              </div>
+            </form>
+          </div>
+          <div class="card section">
+            <div class="section-head">
+              <h2>Recent Entries</h2>
+              <span class="muted" id="allTxnCount">0 entries</span>
+            </div>
+            <div class="list" id="allTransactions"></div>
+          </div>
+        </section>
+
+        <section class="grid workspace view hidden" data-panel="payables">
+          <div class="card section">
+            <div class="section-head">
+              <h2>Add Party</h2>
+              <span class="muted">Debtors and creditors</span>
+            </div>
+            <form class="form-grid" id="partyForm">
+              <label>
+                <span>Name</span>
+                <input name="name" placeholder="Ramesh Traders" required />
+              </label>
+              <label>
+                <span>Type</span>
+                <select name="type">
+                  <option value="customer">Customer</option>
+                  <option value="vendor">Vendor</option>
+                </select>
+              </label>
+              <label>
+                <span>Opening Balance</span>
+                <input name="balance" type="number" step="0.01" value="0" />
+              </label>
+              <div class="actions">
+                <button class="btn primary" type="submit">Add Party</button>
+              </div>
+            </form>
+          </div>
+          <div class="card section">
+            <div class="section-head">
+              <h2>Debtors / Creditors</h2>
+              <span class="muted" id="partyCount">0 parties</span>
+            </div>
+            <div class="list" id="parties"></div>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="bank">
+          <div class="section-head">
+            <h2>Bank & Cards</h2>
+            <span class="muted">HDFC · ICICI · SBI</span>
+          </div>
+          <div class="bank-grid">
+            <div class="bank-card"><span>HDFC Bank</span><strong>Rs 8,45,200</strong><small>**** 4821</small></div>
+            <div class="bank-card"><span>ICICI Bank</span><strong>Rs 3,22,100</strong><small>**** 7732</small></div>
+            <div class="bank-card"><span>SBI Current</span><strong>Rs 1,18,400</strong><small>**** 2190</small></div>
+          </div>
+          <div class="table-card">
+            <div class="table-title">Recent Transactions</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Bank</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>15 Sep</td>
+                  <td>Salary Transfer</td>
+                  <td>HDFC</td>
+                  <td class="expense">-Rs 1,80,000</td>
+                </tr>
+                <tr>
+                  <td>14 Sep</td>
+                  <td>Customer Payment</td>
+                  <td>ICICI</td>
+                  <td class="income">+Rs 4,26,000</td>
+                </tr>
+                <tr>
+                  <td>12 Sep</td>
+                  <td>GST Payment</td>
+                  <td>SBI</td>
+                  <td class="expense">-Rs 48,600</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="accounts">
+          <div class="section-head">
+            <h2>Traditional Accounts</h2>
+            <span class="muted">Schedule III · P&L · Trial Balance</span>
+          </div>
+          <div class="report-grid" id="reports"></div>
+        </section>
+
+        <section class="card section view hidden" data-panel="graphs">
+          <div class="section-head">
+            <h2>Advance Graphs</h2>
+            <span class="muted">12 chart series · AI insights</span>
+          </div>
+          <div class="graph-controls">
+            <select aria-label="Chart series">
+              <option>Rev vs Exp</option>
+              <option>GST Trend</option>
+              <option>Budget vs Actual</option>
+            </select>
+            <select aria-label="Chart type">
+              <option>Bar Chart</option>
+              <option>Line Chart</option>
+              <option>Area Chart</option>
+            </select>
+            <select aria-label="Period">
+              <option>Full Year</option>
+              <option>Q1</option>
+              <option>Q2</option>
+              <option>Recent 3 Months</option>
+            </select>
+            <select aria-label="Theme">
+              <option>Saffron</option>
+              <option>Tricolor</option>
+              <option>Green</option>
+              <option>Blue</option>
+            </select>
+          </div>
+          <div class="graph-card">
+            <div class="section-head">
+              <h3>Revenue vs Expense · FY 25-26</h3>
+              <span class="muted">Monthly</span>
+            </div>
+            <div class="advanced-chart" aria-label="Revenue versus expense bar chart">
+              <div style="--rev: 46%; --exp: 32%"><span>Apr</span></div>
+              <div style="--rev: 62%; --exp: 44%"><span>May</span></div>
+              <div style="--rev: 52%; --exp: 39%"><span>Jun</span></div>
+              <div class="current" style="--rev: 78%; --exp: 58%"><span>Jul</span></div>
+            </div>
+          </div>
+          <div class="graph-insight">
+            Revenue is outpacing expenses. Profit margin: <strong>26.8%</strong>. Revenue grew around 25% vs same period last year.
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="gst">
+          <div class="section-head">
+            <h2>GST & Compliance</h2>
+            <span class="muted">GSTR-1 · GSTR-3B · ITC Match</span>
+          </div>
+          <div class="gst-panel">
+            <div><span>GSTR-1</span><strong>Filed</strong></div>
+            <div><span>GSTR-3B</span><strong>Due in 7 days</strong></div>
+            <div><span>Net GST Payable</span><strong>Rs 2.1L</strong></div>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="tax">
+          <div class="section-head">
+            <h2>Tax Intelligence</h2>
+            <span class="muted">AI-powered live ledger</span>
+          </div>
+          <div class="module-placeholder">Advance tax, deduction finder, estimated tax liability, and compliance calendar will appear here.</div>
+        </section>
+
+        <section class="card section view hidden" data-panel="expense">
+          <div class="section-head">
+            <h2>Expense Analysis</h2>
+            <span class="muted">Pie chart · ranking · budget</span>
+          </div>
+          <div class="module-placeholder">Expense pie chart, top expense ranking, and budget-vs-actual comparison will appear here.</div>
+        </section>
+
+        <section class="card section view hidden" data-panel="stack">
+          <div class="section-head">
+            <h2>Stack Tracker</h2>
+            <span class="muted">SaaS subscriptions</span>
+          </div>
+          <div class="module-placeholder">Monthly and annual subscription costs with renewal dates will appear here.</div>
+        </section>
+
+        <section class="card section view hidden" data-panel="ai">
+          <div class="section-head">
+            <h2>AI Chatbot</h2>
+            <span class="muted">Natural language Q&A</span>
+          </div>
+          <div class="prompt-grid">
+            <button class="quick-action">What is my GST payable?</button>
+            <button class="quick-action">Show top 3 expenses</button>
+            <button class="quick-action">How do I improve cash flow?</button>
+            <button class="quick-action">Explain my balance sheet</button>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="whatsapp">
+          <div class="section-head">
+            <h2>WhatsApp Hub</h2>
+            <span class="muted">Templates · auto rules · debtor reminders</span>
+          </div>
+          <div class="module-placeholder">Payment reminders, invoice sent messages, overdue alerts, and auto-rule toggles will appear here.</div>
+        </section>
+
+        <section class="card section view hidden" data-panel="alerts">
+          <div class="section-head">
+            <h2>Alerts</h2>
+            <span class="muted">GST · Tax · Bank · Debtors</span>
+          </div>
+          <div class="list" id="reminders"></div>
+          <div class="list alert-list">
+            <div class="alert danger">GST payment due in 7 days</div>
+            <div class="alert warning">Sharma ji payment overdue</div>
+            <div class="alert info">Low SBI bank balance threshold</div>
+            <div class="alert success">Journal entry posted successfully</div>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="reports">
+          <div class="section-head">
+            <h2>Reports</h2>
+            <span class="muted">Live from ledger state</span>
+          </div>
+        </section>
+
+        <section class="card section view hidden" data-panel="audit">
+          <div class="section-head">
+            <h2>AI Audit</h2>
+            <span class="muted">Every agent/tool action is logged</span>
+          </div>
+          <div class="list" id="auditLogs"></div>
+        </section>
+      </main>
+
+      <aside class="context-panel">
+        <div class="context-card">
+          <div class="section-head">
+            <h2>Context Actions</h2>
+          </div>
+          <div class="context-actions" id="contextActions"></div>
+        </div>
+
+        <div class="context-card assistant" aria-label="AI assistant">
+          <div class="section-head">
+            <h2>AI Assistant</h2>
+            <span class="muted">Orchestrator</span>
+          </div>
+          <div class="chat-log" id="chatLog">
+            <div class="bubble agent">
+              Namaste. Try: "Sharma ji se 12500 UPI aaye" or "kal payment reminder lagao".
+            </div>
+          </div>
+          <form class="composer" id="aiForm">
+            <textarea id="message" placeholder="Hindi, English, ya Hinglish me likhiye..."></textarea>
+            <div class="actions">
+              <button class="btn primary" type="submit">Send</button>
+              <button class="btn" type="button" id="insightBtn">Summary</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+
+      <div class="insight-overlay hidden" id="insightOverlay" aria-hidden="true">
+        <aside class="insight-drawer" role="dialog" aria-modal="true" aria-labelledby="insightTitle">
+          <div class="section-head">
+            <div>
+              <span class="module-kicker">AI POWERED CONTEXT</span>
+              <h2 id="insightTitle">AI Insight</h2>
+            </div>
+            <button class="icon-button" id="insightClose" type="button" aria-label="Close insight">×</button>
+          </div>
+          <span class="pill" id="contextModule">Dashboard</span>
+          <p id="contextInsight">Revenue is ahead of expenses and the balance sheet check is currently balanced.</p>
+          <div class="insight-tools">
+            <button class="btn primary" id="voiceButton" type="button">Start Voice</button>
+            <button class="btn" id="speakInsightButton" type="button">Read Insight</button>
+          </div>
+          <div class="insight-chat" id="insightChat">
+            <div class="bubble agent">Ask a follow-up about this page, or use voice if your browser supports it.</div>
+          </div>
+          <div class="prompt-grid insight-prompts">
+            <button class="quick-action" type="button" data-insight-prompt="Explain this page">Explain this page</button>
+            <button class="quick-action" type="button" data-insight-prompt="What should I check next?">What should I check next?</button>
+            <button class="quick-action" type="button" data-insight-prompt="Summarize risks">Summarize risks</button>
+            <button class="quick-action" type="button" data-insight-prompt="Suggest an action">Suggest an action</button>
+          </div>
+          <form class="insight-composer" id="insightForm">
+            <input id="insightMessage" placeholder="Discuss this module..." />
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+          <div class="voice-status" id="voiceStatus">Voice ready when supported by browser.</div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
